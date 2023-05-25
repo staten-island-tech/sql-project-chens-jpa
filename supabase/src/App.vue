@@ -1,6 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { supabase } from './supabase'
+
+const id = ref([])
+async function getId() {
+  const { data } = await supabase.from('id').select()
+  id.value = data
+}
 </script>
 
 <template>
