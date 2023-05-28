@@ -1,8 +1,18 @@
 <script setup>
+
 import { onMounted, ref } from 'vue'
 import Account from './components/Account.vue'
 import Auth from './components/auth.vue'
 import { supabase } from './supabase'
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+
+const pinia = createPinia()
+const app = createApp(App)
+
+app.use(pinia)
+app.mount('#app')
 
 const session = ref()
 
