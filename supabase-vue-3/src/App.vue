@@ -1,11 +1,13 @@
 <script setup>
 
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import Account from './components/Account.vue'
 import Auth from './components/auth.vue'
 import { supabase } from './supabase'
+import { useUserStore } from './stores/userStore'
 
 const session = ref()
+const store = useUserStore()
 
 onMounted(() => {
   supabase.auth.getSession().then(({ data }) => {
@@ -17,9 +19,8 @@ onMounted(() => {
   })
 })
 
-const doubleValue = computed(() => store.doubleCount)
-
-
+console.log(store.data)
+console.log(session)
 </script>
 
 <template>
