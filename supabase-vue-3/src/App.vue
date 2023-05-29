@@ -17,28 +17,9 @@ onMounted(() => {
   })
 })
 
-async function getData(event) {
-    if (event !== undefined) {
-        event.preventDefault()
-    }
-    let URL = `https://the-cocktail-db.p.rapidapi.com/search.php`
-    try {
-        const response = await fetch(URL)
-        if (response.status < 200 || response.status > 299) {
-            console.log(response.status);
-            throw error(response);
-        } else {
-            const data = await response.json();
-            console.log(data)
-            ;
-            };
-        }
-    catch (error) {
-        console.log(error);
-        console.log("womp womp")
-        DOM.mangaSpace.textContent = "Sorry not available";
-    }}
-getData()
+const doubleValue = computed(() => store.doubleCount)
+
+
 </script>
 
 <template>
