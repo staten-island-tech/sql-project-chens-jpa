@@ -4,15 +4,6 @@ import { onMounted, ref } from 'vue'
 import Account from './components/Account.vue'
 import Auth from './components/auth.vue'
 import { supabase } from './supabase'
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
-
-const pinia = createPinia()
-const app = createApp(App)
-
-app.use(pinia)
-app.mount('#app')
 
 const session = ref()
 
@@ -25,6 +16,36 @@ onMounted(() => {
     session.value = _session
   })
 })
+
+async function getData(event) {
+    if (event !== undefined) {
+        event.preventDefault()
+    }
+    let URL = `https://the-cocktail-db.p.rapidapi.com/search.php`
+    try {
+        const response = await fetch(URL)
+        if (response.status < 200 || response.status > 299) {
+            console.log(response.status);
+            throw error(response);
+        } else {
+            const data = await response.json();
+            data.data.forEach((anime) => {
+                    DOM.mangaSpace.insertAdjacentHTML(
+                        "afterbegin",
+                        `<div class="card">
+                            <h2>${anime.title}</h2>
+                            <img src="${anime.images.jpg.large_image_url}" alt="the popular anime ${anime.title}"
+                        </div>`
+                    );
+                });
+            };
+        }
+    catch (error) {
+        console.log(error);
+        console.log("womp womp")
+        DOM.mangaSpace.textContent = "Sorry not available";
+    }}
+getData()
 </script>
 
 <template>
