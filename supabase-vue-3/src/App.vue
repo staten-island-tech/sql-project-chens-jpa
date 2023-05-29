@@ -29,15 +29,8 @@ async function getData(event) {
             throw error(response);
         } else {
             const data = await response.json();
-            data.data.forEach((anime) => {
-                    DOM.mangaSpace.insertAdjacentHTML(
-                        "afterbegin",
-                        `<div class="card">
-                            <h2>${anime.title}</h2>
-                            <img src="${anime.images.jpg.large_image_url}" alt="the popular anime ${anime.title}"
-                        </div>`
-                    );
-                });
+            console.log(data)
+            ;
             };
         }
     catch (error) {
@@ -52,5 +45,8 @@ getData()
   <div class="container" style="padding: 50px 0 100px 0">
     <Account v-if="session" :session="session" />
     <Auth v-else />
+    <div id="emptyContainer">
+
+    </div>
   </div>
 </template>
