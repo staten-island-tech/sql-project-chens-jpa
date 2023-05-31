@@ -2,6 +2,7 @@
 import { onMounted, ref, computed } from "vue";
 import Account from "./components/Account.vue";
 import Auth from "./components/auth.vue";
+import Dashboard from "./views/Dashboard.vue";
 import { supabase } from "./supabase";
 import { useUserStore } from "./stores/userStore";
 
@@ -27,5 +28,6 @@ console.log(session);
     <Account v-if="session" :session="session" />
     <Auth v-else />
     <div id="emptyContainer"></div>
+    <Dashboard />
   </div>
 </template>
