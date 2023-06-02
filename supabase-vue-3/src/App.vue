@@ -31,3 +31,45 @@ console.log(session);
     <Dashboard />
   </div>
 </template>
+
+<style>
+:root {
+  --black: #1f1f1f;
+  --green: #3ecf8e;
+  --darkgreen: #238454;
+
+  --h1: 5rem;
+  --h2: 4rem;
+  --p: 3rem;
+}
+
+h1 {
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
+p {
+  font-size: var(--p);
+}
+
+html,
+body,
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+form {
+  font-size: var(--h1);
+}
+
+button {
+  font-size: 1vw;
+}
+</style>
