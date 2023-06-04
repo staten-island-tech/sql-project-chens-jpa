@@ -4,11 +4,11 @@ import { supabase } from '../supabase.js'
 
 const { data, error } = await supabase.from('store').select()
 
-export const useMusicStore = defineStore('storeId', {
+export const useMusicStore = defineStore('music', {
   state: () => {
     return {
-      music:data
-       
+      data:data,
+      error:error       
     }
   },
 })
