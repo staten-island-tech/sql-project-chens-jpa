@@ -1,12 +1,29 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
-  {
-    path: "/",
-    name: "Dashboard",
-    component: loadPage("Dashboard"),
-    meta: {
-      requiresAuth: true,
+    {
+      path: '/Users',
+      name: 'Users',
+      component: loadPage("Users"),
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: '/Albums',
+      name: 'Albums',
+      component: loadPage("Users"),
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: '/Dashboard',
+      name: 'Dashboard',
+      component: loadPage("Dashboard"),
+      meta: {
+        requiresAuth: true,
+      }
     },
   },
   {

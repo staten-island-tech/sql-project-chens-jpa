@@ -1,4 +1,5 @@
 <template>
+  <div>sign up</div>
   <form class="row flex-center flex" @submit.prevent="handleLogin">
     <div class="col-6 form-widget">
       <h1 class="header">Supabase + Vue 3</h1>
@@ -48,7 +49,3 @@ const handleLogin = async () => {
   }
 };
 </script>
-
-<style>
-
-</style>

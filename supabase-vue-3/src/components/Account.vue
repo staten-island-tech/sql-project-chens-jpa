@@ -1,4 +1,5 @@
 <template>
+  <div>please sign up</div>
   <form class="form-widget" @submit.prevent="updateProfile">
     <div>
       <label for="email">Email</label>
@@ -23,7 +24,7 @@
     </div>
 
     <div>
-      <button class="button body" @click="signOut" :disabled="loading">
+      <button class="button block" @click="signOut" :disabled="loading">
         Sign Out
       </button>
     </div>
@@ -106,5 +107,3 @@ async function signOut() {
   }
 }
 </script>
-
-<style></style>
