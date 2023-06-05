@@ -1,8 +1,8 @@
 <template>
   <div>sign up</div>
   <form class="row flex-center flex" @submit.prevent="handleLogin">
-    <div class="col-6 form-widget">
-      <h1 class="header">Supabase + Vue 3</h1>
+    <div class="supabase">
+      <h1 class="header">Supabeats</h1>
       <p class="description">Sign in via magic link with your email below</p>
       <div>
         <input
@@ -49,3 +49,10 @@ const handleLogin = async () => {
   }
 };
 </script>
+
+<style scoped>
+.supabase {
+  text-align: center;
+  font-size: 30px;
+}
+</style>
