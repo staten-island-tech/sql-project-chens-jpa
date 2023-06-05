@@ -1,7 +1,8 @@
 <script setup>
 import { useRoute, useRouter } from "vue-router";
 import { onMounted, ref, computed } from "vue";
-import Auth from "./components/auth.vue";
+import Header from "./components/Header.vue";
+import Auth from "./components/Auth.vue";
 import { supabase } from "./supabase";
 import { useUserStore } from "./stores/userStore";
 import { useMusicStore } from "./stores/musicStore";
@@ -46,6 +47,7 @@ onMounted(() => {
     />
     <Auth v-else-if="!session" />
     <router-view />
+    <Header />
   </div>
 </template>
 
