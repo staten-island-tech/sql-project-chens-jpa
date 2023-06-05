@@ -1,14 +1,15 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import { supabase } from "../supabase.js";
 import { reactive } from "vue";
+import { supabase } from "../supabase.js";
 
 const { data, error } = await supabase.from("store").select();
 
-export const useMusicStore = defineStore("storeId", {
+export const useMusicStore = defineStore("music", {
   state: () => {
     return {
-      music: data,
+      data: data,
+      error: error,
     };
   },
 });
