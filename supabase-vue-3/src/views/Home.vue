@@ -3,5 +3,7 @@
 </script>
 
 <template>
-    
+    <div>
+        eaea
+    </div>
 </template>

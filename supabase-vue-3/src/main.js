@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import App from 'C:\Users\Owner\OneDrive - NYCDOE\Documents\GitHub\sql-project-chens-jpa\supabase-vue-3\src\App.vue'
 import router from './router/index.js'
+import App from './App.vue'
 
 const pinia = createPinia()
 const app = createApp(App)

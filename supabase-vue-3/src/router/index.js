@@ -1,13 +1,9 @@
-import createRouter from 'vue-router';
-import RouterLink from 'vue-router'
-import Vue from 'vue'
-import App from './App.vue'
-import VueRouter from 'vue-router'
-import Albums from './views/Albums.vue'
-import Users from './views/Users.vue'
-const routes = createRouter({
+import { createRouter, createWebHistory } from 'vue-router';
+import Albums from '../views/Albums.vue'
+import Users from '../views/Users.vue'
+import Home from '../views/Home.vue'
 
-routes: [
+const routes = [
   {
     path: '/Users',
     name: 'Users',
@@ -23,13 +19,18 @@ routes: [
     meta: {
       requiresAuth: true,
     }
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+    
   }
   
 ]
-})
 
-const router = VueRouter.createRouter ({
-  history: VueRouter.createWebHashHistory(),
+const router = createRouter ({
+  history: createWebHistory(),
   routes,
 })
 

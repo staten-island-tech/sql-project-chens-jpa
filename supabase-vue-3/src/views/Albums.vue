@@ -1,12 +1,11 @@
-<script >
+<script setup >
 
 import { RouterLink } from 'vue-router'
 import { onMounted, ref, computed } from 'vue'
-import Account from './components/Account.vue'
-import Auth from './components/auth.vue'
-import { supabase } from './supabase'
-import { useUserStore } from './stores/userStore'
-import { useMusicStore } from './stores/musicStore'
+import Auth from '../components/auth.vue'
+import { supabase } from '../supabase'
+import { useUserStore } from '../stores/userStore'
+import { useMusicStore } from '../stores/musicStore'
 
 
 const session = ref()
@@ -23,24 +22,8 @@ onMounted(() => {
   })
 })
 
-export default {
-    computed: {
-        username() {
-            return this.$route.params.username
-        },
-    },
-    methods: {
-        goToDashboard() {
-            if (isAuthenticated) {
-                this.$router.push('Dashboard')
-            }
-            else {
-                this.$router.push('SignIn')
-            }
-        }
-    }
+console.log(musicStore)
 
-}
 
 console.log()
 
@@ -48,7 +31,11 @@ console.log()
 </script>
 
 <template>
-    <p>
+    <p v-if=!session>
         you are not logged in 
     </p>
+    <p v-if=session>
+        blah
+    </p>
+    
 </template>

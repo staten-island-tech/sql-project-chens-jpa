@@ -4,7 +4,6 @@
 
 import { useRoute, useRouter } from 'vue-router'
 import { onMounted, ref, computed } from 'vue'
-import Account from './components/Account.vue'
 import Auth from './components/auth.vue'
 import { supabase } from './supabase'
 import { useUserStore } from './stores/userStore'
@@ -35,7 +34,7 @@ onMounted(() => {
   })
 })
 
-console.log(route)
+
 </script>
 
 <template>
@@ -43,7 +42,7 @@ console.log(route)
   <div class="container" style="padding: 50px 0 100px 0">
     <div id="emptyContainer">
       <nav>
-          <RouterLink to="/Users">Home</RouterLink>
+          <RouterLink to="/Users">Users</RouterLink>
           <RouterLink to="/Albums">Albums</RouterLink>
           <router-link to="/">About</router-link>  
       </nav>
