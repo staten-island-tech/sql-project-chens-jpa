@@ -11,7 +11,14 @@ export const useMusicStore = defineStore("storeId", {
       music: data,
     };
   },
-  cart: [],
-  total: 0,
-  numberItems: 0,
 });
+
+export const musicStore = reactive({
+  albums: [],
+});
+
+data.forEach((e) => {
+  musicStore.albums.push(e);
+});
+
+console.log(musicStore);
