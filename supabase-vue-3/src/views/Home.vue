@@ -35,6 +35,10 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  text-align: center;
+  font-size: 40px;
+}
 .cardsGallery {
   display: flex;
   justify-content: center;
