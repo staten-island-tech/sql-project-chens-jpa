@@ -1,56 +1,41 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import createRouter from 'vue-router';
+import RouterLink from 'vue-router'
+import Vue from 'vue'
+import App from './App.vue'
+import VueRouter from 'vue-router'
+import Albums from './views/Albums.vue'
+import Users from './views/Users.vue'
+const routes = createRouter({
+
+routes: [
+  {
+    path: '/Users',
+    name: 'Users',
+    component: Users,
+    meta: {
+      requiresAuth: true,
+    }
+  },
+  {
+    path: '/Albums',
+    name: 'Albums',
+    component: Albums,
+    meta: {
+      requiresAuth: true,
+    }
+  }
+  
+]
+})
+
+const router = VueRouter.createRouter ({
+  history: VueRouter.createWebHashHistory(),
+  routes,
+})
 
 
-const routes = [
-    {
-      path: '/Users',
-      name: 'Users',
-      component: loadPage("Users"),
-      meta: {
-        requiresAuth: true,
-      }
-    },
-    {
-      path: '/Albums',
-      name: 'Albums',
-      component: loadPage("Users"),
-      meta: {
-        requiresAuth: true,
-      }
-    },
-    {
-      path: '/Dashboard',
-      name: 'Dashboard',
-      component: loadPage("Dashboard"),
-      meta: {
-        requiresAuth: true,
-      }
-    },
-    {
-      path: '/sign-up',
-      name: 'SignUp',
-      component: loadPage("SignUp")
-    },
-    {
-      path: '/sign-in',
-      name: 'SignIn',
-      component: loadPage("SignIn")
-    },
-  ]
-  const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
-    routes
-  })
-  
-  router.beforeEach((to, from, next) => {
-    // get current user info
-    const currentUser = supabase.auth.user();
-    const requiresAuth = to.matched.some
-    (record => record.meta.requiresAuth);
-  
-    if(requiresAuth && !currentUser) next('sign-in');
-    else if(!requiresAuth && currentUser) next("/");
-    else next();
-  })
-  
-  export default router
+export default router
+
+
+
+//
