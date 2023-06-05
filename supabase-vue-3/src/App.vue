@@ -46,8 +46,7 @@ onMounted(() => {
           <router-link to="/">About</router-link>  
       </nav>
     </div>
-    <Account v-if="session && !pathname.includes('Users') && !pathname.includes('Albums')" :session="session" />
-    <Auth v-else-if="!session" />
+    <Auth v-if="!session" />
     <router-view/>
     
   </div>

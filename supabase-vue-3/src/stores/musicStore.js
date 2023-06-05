@@ -12,14 +12,19 @@ export const useMusicStore = defineStore("music", {
       error: error,
     };
   },
+  actions: {
+    getAlbums() {
+      this.data = data;
+    }
+  }
 });
 
-export const musicStore = reactive({
-  albums: [],
-});
+// export const musicStore = reactive({
+//   albums: [],
+// });
 
-data.forEach((e) => {
-  musicStore.albums.push(e);
-});
+// data.forEach((e) => {
+//   musicStore.albums.push(e);
+// });
 
-console.log(musicStore);
+// console.log(musicStore);

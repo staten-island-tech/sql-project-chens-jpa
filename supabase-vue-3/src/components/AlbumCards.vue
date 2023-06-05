@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import { musicStore } from "../stores/musicStore";
 import Button from "../components/Button.vue";
 
 export default {

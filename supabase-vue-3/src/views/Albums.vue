@@ -6,6 +6,7 @@ import Auth from '../components/auth.vue'
 import { supabase } from '../supabase'
 import { useUserStore } from '../stores/userStore'
 import { useMusicStore } from '../stores/musicStore'
+import  AlbumCards  from '../components/AlbumCards.vue'
 
 
 const session = ref()
@@ -24,8 +25,9 @@ onMounted(() => {
 
 console.log(musicStore)
 
+musicStore.getAlbums();
 
-console.log()
+console.log(musicStore)
 
 
 </script>
@@ -37,5 +39,12 @@ console.log()
     <p v-if=session>
         blah
     </p>
+    <div >
+       <AlbumCards v-for="(album, index) in musicStore.data" :id="album.id" 
+       :artist="album.artist" :title="album.title" :img="album.img"
+        >
+
+       </AlbumCards>
+    </div>
     
 </template>
