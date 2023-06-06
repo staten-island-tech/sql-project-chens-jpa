@@ -5,7 +5,7 @@ import Home from "../views/Home.vue";
 
 const routes = [
   {
-    path: "/Account",
+    path: "/account",
     name: "Account",
     component: Account,
     meta: {
@@ -13,7 +13,7 @@ const routes = [
     },
   },
   {
-    path: "/Favorites",
+    path: "/favorites",
     name: "Favorites",
     component: Albums,
     meta: {
