@@ -59,14 +59,14 @@ h2 {
 img {
   height: 30rem;
   width: 30rem;
-  box-shadow: 5px 5px 10px black
+  box-shadow: 5px 5px 10px black;
 }
 
 .flip-card {
   background-color: transparent;
   height: 30rem;
   width: 30rem;
-  margin: 2rem;
+  margin: 3rem;
   perspective: 1000px;
 }
 
@@ -81,7 +81,7 @@ img {
 
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
-  box-shadow: 5px 5px 10px black
+  box-shadow: 5px 5px 10px black;
 }
 
 .flip-card-front,
