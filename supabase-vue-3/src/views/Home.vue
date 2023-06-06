@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <h1>Welcome to our Home Page</h1>
-  </div>
+  <section class="container">
+    <h1>Welcome {{ username }}!</h1>
 
-  <section>
-    <div class="cardsGallery">
-      <AlbumCards
+    <div class="gallery">
+      <Cards
         v-for="album in musicStore.albums"
         :key="album.title"
         :title="album.title"
@@ -18,13 +16,13 @@
 </template>
 
 <script>
-import AlbumCards from "../components/AlbumCards.vue";
+import Cards from "../components/Cards.vue";
 import { musicStore } from "../stores/musicStore";
 
 export default {
   name: "Home",
   components: {
-    AlbumCards,
+    Cards,
   },
   data() {
     return {
@@ -36,10 +34,9 @@ export default {
 
 <style scoped>
 h1 {
-  text-align: center;
-  font-size: 40px;
+  font-size: var(--big);
 }
-.cardsGallery {
+.gallery {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

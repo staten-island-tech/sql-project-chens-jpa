@@ -1,27 +1,14 @@
 <template>
-  <div>sign up</div>
-  <form class="row flex-center flex" @submit.prevent="handleLogin">
-    <div class="supabase">
-      <h1 class="header">Supabeats</h1>
-      <p class="description">Sign in via magic link with your email below</p>
-      <div>
-        <input
-          class="inputField"
-          required
-          type="email"
-          placeholder="Your email"
-          v-model="email"
-        />
-      </div>
-      <div>
-        <input
-          type="submit"
-          class="button block"
-          :value="loading ? 'Loading' : 'Send magic link'"
-          :disabled="loading"
-        />
-      </div>
-    </div>
+  <form id="form" @submit.prevent="handleLogin">
+    <h2>Sign in via magic link to your email!</h2>
+
+    <input required type="email" placeholder="Your email" v-model="email" />
+    <input
+      id="submit-btn"
+      type="submit"
+      :value="loading ? 'Loading' : 'Send magic link'"
+      :disabled="loading"
+    />
   </form>
 </template>
 
@@ -51,8 +38,17 @@ const handleLogin = async () => {
 </script>
 
 <style scoped>
-.supabase {
-  text-align: center;
-  font-size: 30px;
+h2 {
+  font-size: var(--med);
+}
+
+input {
+  font-size: var(--small);
+  margin: 2rem 0rem;
+  padding: 0rem 1rem;
+}
+
+#submit-btn {
+  margin: 0rem 1rem;
 }
 </style>
