@@ -40,15 +40,19 @@ const handleLogin = async () => {
 <style scoped>
 h2 {
   font-size: var(--med);
+  text-align: center;
 }
 
 input {
   font-size: var(--small);
-  margin: 2rem 0rem;
+  margin: 2rem 0rem ;
   padding: 0rem 1rem;
+  margin-left: 40%;
+  margin-right: 30%;
+  
 }
 
 #submit-btn {
-  margin: 0rem 1rem;
+  margin: 0rem 62rem;
 }
 </style>
