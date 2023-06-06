@@ -35,6 +35,7 @@ export default {
 <style scoped>
 h1 {
   font-size: var(--big);
+  text-align: center;
 }
 .gallery {
   display: flex;
