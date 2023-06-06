@@ -1,12 +1,11 @@
 <script setup>
 import { useRoute, useRouter } from "vue-router";
 import { onMounted, ref, computed } from "vue";
-import Header from "./components/Header.vue";
-import Auth from "./components/Auth.vue";
 import { supabase } from "./supabase";
 import { useUserStore } from "./stores/userStore";
 import { useMusicStore } from "./stores/musicStore";
 import { RouterLink } from "vue-router";
+import Auth from "./components/Auth.vue";
 
 const session = ref();
 const userStore = useUserStore();
@@ -31,28 +30,74 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container" style="padding: 50px 0 100px 0">
-    <div id="emptyContainer">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/Users">Profile</RouterLink>
-        <RouterLink to="/Albums">Albums</RouterLink>
-      </nav>
+  <section class="container">
+    <nav id="top-bar">
+      <img src="supabeats.png" alt="" class="link" id="logo" />
+      <p class="top-bar-items">|</p>
+      <RouterLink to="/" class="top-bar-items">Home</RouterLink>
+      <RouterLink to="/Account" class="top-bar-items">Account</RouterLink>
+      <RouterLink to="/Favorites" class="top-bar-items">Favorites</RouterLink>
+    </nav>
+
+    <div class="container">
+      <Account
+        v-if="
+          session && !pathname.includes('Users') && !pathname.includes('Albums')
+        "
+        :session="session"
+      />
+      <Auth v-else-if="!session" />
     </div>
-    <Account
-      v-if="
-        session && !pathname.includes('Users') && !pathname.includes('Albums')
-      "
-      :session="session"
-    />
-    <Auth v-else-if="!session" />
+
     <router-view />
-    <Header />
-  </div>
+  </section>
 </template>
 
 <style>
-body {
+html,
+body,
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
   font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --black: #1f1f1f;
+  --green: #3ecf8e;
+  --dark-green: #238454;
+
+  --big: 4rem;
+  --med: 2.5rem;
+  --small: 2rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  font-size: var(--small);
+}
+
+.container {
+  margin: 2rem;
+}
+
+#logo {
+  height: 3.5rem;
+}
+
+#top-bar {
+  font-size: var(--big);
+  display: flex;
+}
+
+.top-bar-items {
+  margin: 0rem 2rem;
+  text-decoration: none;
+  color: var(--black);
+  font-weight: bold;
 }
 </style>

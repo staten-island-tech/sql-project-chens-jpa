@@ -1,22 +1,22 @@
 <template>
-  <button>favorite</button>
+  <button>{{ title }}</button>
 </template>
 
 <script>
 export default {
   name: "Button",
+  props: {
+    title: String,
+  },
 };
 </script>
 
 <style scoped>
 button {
-  padding: 10px;
+  font-size: var(--big);
+  padding: 1rem;
   border: none;
   transition: 0.2s;
   background: none;
-}
-
-button:hover {
-  transform: scale(1.1);
 }
 </style>

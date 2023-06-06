@@ -1,20 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Albums from "../views/Albums.vue";
-import Users from "../views/Users.vue";
+import Albums from "../views/Favorites.vue";
+import Account from "../components/Account.vue";
 import Home from "../views/Home.vue";
 
 const routes = [
   {
-    path: "/Users",
-    name: "Users",
-    component: Users,
+    path: "/Account",
+    name: "Account",
+    component: Account,
     meta: {
       requiresAuth: true,
     },
   },
   {
-    path: "/Albums",
-    name: "Albums",
+    path: "/Favorites",
+    name: "Favorites",
     component: Albums,
     meta: {
       requiresAuth: true,
