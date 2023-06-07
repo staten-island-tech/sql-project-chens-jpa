@@ -65,7 +65,7 @@ img {
   background-color: transparent;
   height: 30rem;
   width: 30rem;
-  margin: 2rem;
+  margin: 3rem;
   perspective: 1000px;
 }
 
