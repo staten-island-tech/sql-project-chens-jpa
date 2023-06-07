@@ -16,15 +16,19 @@
 </template>
 
 <script>
-import { musicStore } from "../stores/musicStore";
+import { useMusicStore } from "../stores/musicStore";
 import Button from "../components/Button.vue";
+import { useUserStore } from "../stores/userStore";
+import { supabase } from "../supabase";
+import { onMounted, ref, computed } from "vue";
 
 export default {
   name: "Cards",
   data() {
     return {
-      musicStore,
+      musicStore: useMusicStore(),
       toggled: false,
+      userStore: useUserStore(),
     };
   },
   components: {
@@ -35,15 +39,37 @@ export default {
     artist: String,
     img: String,
     id: Number,
+    session: Object
   },
   methods: {
-    toggleFav: function () {
+    toggleFav: async function () {
       if (this.toggled === false) {
+        //supabase.from('Users.favorites').insert({ id: 1, name: 'Denmark' })
         this.toggled = true;
-      } else this.toggled = false;
+        console.log(this.session)
+        let user = this.userStore.data.filter(user => user.id === this.session.user.id)
+        supabase.from('profiles').select(`id ,${user.id}`)
+        console.log(user[0])
+        //const { data, error } = await supabase.from('profiles').select().eq('id', `${user[0].id}`).insert({favorites: this.id})
+        
+        console.log(this.id)    
+        const { data, error } = await supabase.from('profiles').select().eq('id', `${user[0].id}`)
+        console.log(data[0].favorites)
+        console.log(error)
+      } 
+      else 
+        {
+          this.toggled = false; 
+        }
+      console.log(supabase)
+      console.log(this.session)
+      
+      
     },
+     
   },
 };
+
 </script>
 
 <style scoped>
