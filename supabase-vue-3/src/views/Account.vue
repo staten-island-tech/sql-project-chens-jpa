@@ -1,6 +1,9 @@
 <template>
   <h1 v-if="!session">You are not logged in.</h1>
-  <button v-if="session" @click.prevent="logOut()">Sign out</button>
+  <div v-if="session">
+    <h1>hello</h1>
+    <button @click.prevent="logOut()">Sign out</button>">
+  </div>
 </template>
 
 <script setup>
@@ -20,7 +23,7 @@ onMounted(() => {
 });
 
 function logOut() {
-  supabase.auth.signOut()
+  supabase.auth.signOut();
 }
 </script>
 

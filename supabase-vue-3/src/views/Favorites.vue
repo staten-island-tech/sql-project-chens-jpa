@@ -1,3 +1,19 @@
+<template>
+  <h1 v-if="!session">You are not logged in.</h1>
+  <h1 v-if="session">Your favorited albums will appear here.</h1>
+  <div class="gallery">
+    <Cards
+      v-for="album in musicStore.data"
+      :key="album.title"
+      :title="album.title"
+      :artist="album.artist"
+      :img="album.img"
+      :id="album.id"
+      :session="session"
+    />
+  </div>
+</template>
+
 <script setup>
 import { RouterLink } from "vue-router";
 import { onMounted, ref, computed } from "vue";
@@ -25,13 +41,13 @@ console.log(musicStore);
 console.log();
 </script>
 
-<template>
-  <h1 v-if="!session">You are not logged in.</h1>
-  <h1 v-if="session">Your favorited albums will appear here.</h1>
-</template>
-
 <style scoped>
 h1 {
   font-size: var(--med);
+}
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 </style>
