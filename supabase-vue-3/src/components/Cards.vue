@@ -8,8 +8,10 @@
       <div class="flip-card-back">
         <h1>{{ title }}</h1>
         <h2>{{ artist }}</h2>
-        <Button v-if="toggled" @click="toggleFav" title="🖤" />
-        <Button v-else @click="toggleFav" title="🤍" />
+        <div v-if="session">
+          <Button v-if="toggled" @click="toggleFav" title="🖤" />
+          <Button v-else @click="toggleFav" title="🤍" />
+        </div>
       </div>
     </div>
   </div>
@@ -39,37 +41,36 @@ export default {
     artist: String,
     img: String,
     id: Number,
-    session: Object
+    session: Object,
   },
   methods: {
     toggleFav: async function () {
       if (this.toggled === false) {
         //supabase.from('Users.favorites').insert({ id: 1, name: 'Denmark' })
         this.toggled = true;
-        console.log(this.session)
-        let user = this.userStore.data.filter(user => user.id === this.session.user.id)
-        supabase.from('profiles').select(`id ,${user.id}`)
-        console.log(user[0])
+        console.log(this.session);
+        let user = this.userStore.data.filter(
+          (user) => user.id === this.session.user.id
+        );
+        supabase.from("profiles").select(`id ,${user.id}`);
+        console.log(user[0]);
         //const { data, error } = await supabase.from('profiles').select().eq('id', `${user[0].id}`).insert({favorites: this.id})
-        
-        console.log(this.id)    
-        const { data, error } = await supabase.from('profiles').select().eq('id', `${user[0].id}`)
-        console.log(data[0].favorites)
-        console.log(error)
-      } 
-      else 
-        {
-          this.toggled = false; 
-        }
-      console.log(supabase)
-      console.log(this.session)
-      
-      
+
+        console.log(this.id);
+        const { data, error } = await supabase
+          .from("profiles")
+          .select()
+          .eq("id", `${user[0].id}`);
+        console.log(data[0].favorites);
+        console.log(error);
+      } else {
+        this.toggled = false;
+      }
+      console.log(supabase);
+      console.log(this.session);
     },
-     
   },
 };
-
 </script>
 
 <style scoped>
