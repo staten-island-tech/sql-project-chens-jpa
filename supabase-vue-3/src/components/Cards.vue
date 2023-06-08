@@ -1,8 +1,8 @@
 <template>
-  <div class="flip-card" @mouseover="checkFav">
+  <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-card-front">
-        <img :src="img" :alt="altText" />
+        <img :src="img" alt="album image" />
       </div>
 
       <div class="flip-card-back">
@@ -29,9 +29,12 @@ export default {
   data() {
     return {
       musicStore: useMusicStore(),
-      userStore: useUserStore(),
       toggled: false,
+<<<<<<< HEAD
       altText: `${this.artist}'s album, ${this.title}`,
+=======
+      userStore: useUserStore(),
+>>>>>>> parent of 619a8f9 (All the logic for the favorites and cards is done.)
     };
   },
   components: {
@@ -45,6 +48,7 @@ export default {
     session: Object,
   },
   methods: {
+<<<<<<< HEAD
     checkFav: async function () {
       let user = this.userStore.data.filter(
         (user) => user.id === this.session.user.id
@@ -53,9 +57,13 @@ export default {
         this.toggled = true;
       }
     },
+=======
+>>>>>>> parent of 619a8f9 (All the logic for the favorites and cards is done.)
     toggleFav: async function () {
       if (this.toggled === false) {
+        //supabase.from('Users.favorites').insert({ id: 1, name: 'Denmark' })
         this.toggled = true;
+<<<<<<< HEAD
         let user = this.userStore.data.filter(
           (user) => user.id === this.session.user.id
         )[0];
@@ -85,7 +93,29 @@ export default {
         console.log(data);
         console.log(error);
       }
+=======
+        console.log(this.session)
+        let user = this.userStore.data.filter(user => user.id === this.session.user.id)
+        supabase.from('profiles').select(`id ,${user.id}`)
+        console.log(user[0])
+        //const { data, error } = await supabase.from('profiles').select().eq('id', `${user[0].id}`).insert({favorites: this.id})
+        
+        console.log(this.id)    
+        const { data, error } = await supabase.from('profiles').select().eq('id', `${user[0].id}`)
+        console.log(data[0].favorites)
+        console.log(error)
+      } 
+      else 
+        {
+          this.toggled = false; 
+        }
+      console.log(supabase)
+      console.log(this.session)
+      
+      
+>>>>>>> parent of 619a8f9 (All the logic for the favorites and cards is done.)
     },
+     
   },
 };
 </script>

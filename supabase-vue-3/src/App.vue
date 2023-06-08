@@ -32,7 +32,11 @@ console.log(session);
   <section class="container">
     <nav id="top-bar">
       <RouterLink to="/">
+<<<<<<< HEAD
         <img src="../public/supabeats.png" alt="supabeats logo" class="link" id="logo" />
+=======
+        <img src="supabeats.png" alt="" class="link" id="logo" />
+>>>>>>> parent of 619a8f9 (All the logic for the favorites and cards is done.)
       </RouterLink>
       <p class="top-bar-items">|</p>
       <RouterLink to="/" class="top-bar-items" v-if="session">Home</RouterLink>
