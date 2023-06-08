@@ -1,5 +1,6 @@
 <template>
   <h1 v-if="!session">You are not logged in.</h1>
+<<<<<<< Updated upstream
   <h1 v-if="session">Your favorited albums will appear here.</h1>
   <div class="gallery">
     <Cards
@@ -12,6 +13,19 @@
       :session="session"
     />
   </div>
+=======
+  <div v-if="session" class="gallery">
+      <Cards
+        v-for="album in shownMusic"
+        :key="album.title"
+        :title="album.title"
+        :artist="album.artist"
+        :img="album.img"
+        :id="album.id"
+        :session="session"
+      />
+    </div>
+>>>>>>> Stashed changes
 </template>
 
 <script setup>
@@ -36,11 +50,14 @@ onMounted(() => {
   });
 });
 
+<<<<<<< Updated upstream
 console.log(musicStore);
 
 console.log();
 </script>
 
+=======
+>>>>>>> Stashed changes
 <style scoped>
 h1 {
   font-size: var(--med);
