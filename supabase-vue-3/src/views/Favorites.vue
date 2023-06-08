@@ -26,25 +26,9 @@ const session = ref();
 const userStore = useUserStore();
 const musicStore = useMusicStore();
 const pathname = window.location.pathname;
-<<<<<<< HEAD
-const shownMusic = [];
-
 onMounted(() => {
   supabase.auth.getSession().then(({ data }) => {
     session.value = data.session;
-    const user = userStore.data.filter(
-      (user) => user.id === session.value.user.id
-    )[0];
-    user.favorites.forEach((favorite) => {
-      shownMusic.push(
-        musicStore.data.filter((album) => album.id === favorite)[0]
-      );
-    });
-=======
-onMounted(() => {
-  supabase.auth.getSession().then(({ data }) => {
-    session.value = data.session;
->>>>>>> parent of 619a8f9 (All the logic for the favorites and cards is done.)
   });
 
   supabase.auth.onAuthStateChange((_, _session) => {
@@ -57,14 +41,6 @@ console.log(musicStore);
 console.log();
 </script>
 
-<<<<<<< HEAD
-=======
-<template>
-  <h1 v-if="!session">You are not logged in.</h1>
-  <h1 v-if="session">Your favorited albums will appear here.</h1>
-</template>
-
->>>>>>> parent of 619a8f9 (All the logic for the favorites and cards is done.)
 <style scoped>
 h1 {
   font-size: var(--med);

@@ -30,11 +30,7 @@ export default {
     return {
       musicStore: useMusicStore(),
       toggled: false,
-<<<<<<< HEAD
-      altText: `${this.artist}'s album, ${this.title}`,
-=======
       userStore: useUserStore(),
->>>>>>> parent of 619a8f9 (All the logic for the favorites and cards is done.)
     };
   },
   components: {
@@ -48,74 +44,31 @@ export default {
     session: Object,
   },
   methods: {
-<<<<<<< HEAD
-    checkFav: async function () {
-      let user = this.userStore.data.filter(
-        (user) => user.id === this.session.user.id
-      )[0];
-      if (user.favorites != null && user.favorites.includes(this.id)) {
-        this.toggled = true;
-      }
-    },
-=======
->>>>>>> parent of 619a8f9 (All the logic for the favorites and cards is done.)
     toggleFav: async function () {
       if (this.toggled === false) {
         //supabase.from('Users.favorites').insert({ id: 1, name: 'Denmark' })
         this.toggled = true;
-<<<<<<< HEAD
+        console.log(this.session);
         let user = this.userStore.data.filter(
           (user) => user.id === this.session.user.id
-        )[0];
-        if (user.favorites === null) {
-          user.favorites = [this.id];
-        } else {
-          user.favorites.push(this.id);
-        }
-        console.log(user);
+        );
+        supabase.from("profiles").select(`id ,${user.id}`);
+        console.log(user[0]);
+        //const { data, error } = await supabase.from('profiles').select().eq('id', `${user[0].id}`).insert({favorites: this.id})
+
+        console.log(this.id);
         const { data, error } = await supabase
           .from("profiles")
-          .update({ favorites: user.favorites })
-          .eq("id", user.id);
-        console.log(data);
+          .select()
+          .eq("id", `${user[0].id}`);
+        console.log(data[0].favorites);
         console.log(error);
       } else {
         this.toggled = false;
-        let user = this.userStore.data.filter(
-          (user) => user.id === this.session.user.id
-        )[0];
-        user.favorites.splice(user.favorites.indexOf(this.id), 1);
-        console.log(user);
-        const { data, error } = await supabase
-          .from("profiles")
-          .update({ favorites: user.favorites })
-          .eq("id", user.id);
-        console.log(data);
-        console.log(error);
       }
-=======
-        console.log(this.session)
-        let user = this.userStore.data.filter(user => user.id === this.session.user.id)
-        supabase.from('profiles').select(`id ,${user.id}`)
-        console.log(user[0])
-        //const { data, error } = await supabase.from('profiles').select().eq('id', `${user[0].id}`).insert({favorites: this.id})
-        
-        console.log(this.id)    
-        const { data, error } = await supabase.from('profiles').select().eq('id', `${user[0].id}`)
-        console.log(data[0].favorites)
-        console.log(error)
-      } 
-      else 
-        {
-          this.toggled = false; 
-        }
-      console.log(supabase)
-      console.log(this.session)
-      
-      
->>>>>>> parent of 619a8f9 (All the logic for the favorites and cards is done.)
+      console.log(supabase);
+      console.log(this.session);
     },
-     
   },
 };
 </script>
