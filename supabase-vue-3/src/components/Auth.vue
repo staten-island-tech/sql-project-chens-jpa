@@ -1,6 +1,8 @@
 <template>
   <form id="form" @submit.prevent="handleLogin">
-    <h2>Sign in via magic link to your email!</h2>
+
+    <div class="sign-in">
+ <h2>Sign in via magic link to your email!</h2>
 
     <input required type="email" placeholder="Your email" v-model="email" />
     <input
@@ -9,6 +11,10 @@
       :value="loading ? 'Loading' : 'Send magic link'"
       :disabled="loading"
     />
+
+
+    </div>
+   
   </form>
 </template>
 
@@ -54,5 +60,9 @@ input {
 
 #submit-btn {
   margin: 0rem 62rem;
+}
+
+.sign-in{
+  text-align: center;
 }
 </style>

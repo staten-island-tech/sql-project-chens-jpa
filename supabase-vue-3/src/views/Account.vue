@@ -1,20 +1,17 @@
 <template>
   <h1 v-if="!session">You are not logged in.</h1>
-  <button v-if="session" @click.prevent="signOut">Sign out</button>
+  <div v-if="session">
+    <h1>hello</h1>
+    <button @click.prevent="logOut()">Sign out</button>">
+  </div>
 </template>
 
 <script setup>
-import { RouterLink } from "vue-router";
 import { onMounted, ref, computed } from "vue";
-import Auth from "../components/Auth.vue";
 import { supabase } from "../supabase";
-import { useUserStore } from "../stores/userStore";
-import { useMusicStore } from "../stores/musicStore";
 
 const session = ref();
-const userStore = useUserStore();
-const musicStore = useMusicStore();
-const pathname = window.location.pathname;
+
 onMounted(() => {
   supabase.auth.getSession().then(({ data }) => {
     session.value = data.session;
@@ -24,6 +21,10 @@ onMounted(() => {
     session.value = _session;
   });
 });
+
+function logOut() {
+  supabase.auth.signOut();
+}
 </script>
 
 <style scoped>
