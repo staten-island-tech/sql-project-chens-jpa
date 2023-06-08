@@ -14,9 +14,7 @@ const pathname = window.location.pathname;
 //const route = useRoute()
 //const router = useRouter()
 
-const albumClick = () => {
-  router.push("/Albums");
-};
+console.log(userStore);
 
 onMounted(() => {
   supabase.auth.getSession().then(({ data }) => {
@@ -27,16 +25,23 @@ onMounted(() => {
     session.value = _session;
   });
 });
+console.log(session);
 </script>
 
 <template>
   <section class="container">
     <nav id="top-bar">
-      <img src="supabeats.png" alt="" class="link" id="logo" />
+      <RouterLink to="/">
+        <img src="../public/supabeats.png" alt="supabeats logo" class="link" id="logo" />
+      </RouterLink>
       <p class="top-bar-items">|</p>
-      <RouterLink to="/" class="top-bar-items">Home</RouterLink>
-      <RouterLink to="/Account" class="top-bar-items">Account</RouterLink>
-      <RouterLink to="/Favorites" class="top-bar-items">Favorites</RouterLink>
+      <RouterLink to="/" class="top-bar-items" v-if="session">Home</RouterLink>
+      <RouterLink to="/Account" class="top-bar-items" v-if="session"
+        >Account</RouterLink
+      >
+      <RouterLink to="/Favorites" class="top-bar-items" v-if="session"
+        >Favorites</RouterLink
+      >
     </nav>
 
     <div class="container">

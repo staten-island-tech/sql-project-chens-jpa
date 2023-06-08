@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Albums from "../views/Favorites.vue";
-import Account from "../components/Account.vue";
+import Account from "../views/Account.vue";
 import Home from "../views/Home.vue";
 
 const routes = [
