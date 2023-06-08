@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <h1>Welcome {{ username }}!</h1>
+    <h1>Welcome!</h1>
 
     <div class="gallery">
       <Cards
@@ -23,14 +23,12 @@ import { supabase } from "../supabase";
 import { useUserStore } from "../stores/userStore";
 import { useMusicStore } from "../stores/musicStore";
 
-
 const session = ref();
 const userStore = useUserStore();
 const musicStore = useMusicStore();
 const pathname = window.location.pathname;
 //const route = useRoute()
 //const router = useRouter()
-
 
 onMounted(() => {
   supabase.auth.getSession().then(({ data }) => {
@@ -41,8 +39,6 @@ onMounted(() => {
     session.value = _session;
   });
 });
-
-
 </script>
 
 <style scoped>
