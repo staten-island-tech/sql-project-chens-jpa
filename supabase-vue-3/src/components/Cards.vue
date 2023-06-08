@@ -135,6 +135,7 @@ img {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  box-shadow: 5px 5px 10px black;
 }
 
 .flip-card-back {
