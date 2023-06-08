@@ -93,6 +93,7 @@ export default {
 <style scoped>
 h1 {
   font-size: var(--med);
+
 }
 
 h1,
@@ -103,7 +104,7 @@ h2 {
 img {
   height: 30rem;
   width: 30rem;
-  box-shadow: 5px 5px 10px black;
+  box-shadow: 5px 5px 10px black
 }
 
 .flip-card {
@@ -112,6 +113,7 @@ img {
   width: 30rem;
   margin: 3rem;
   perspective: 1000px;
+ 
 }
 
 .flip-card-inner {
@@ -135,6 +137,7 @@ img {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  box-shadow: 5px 5px 10px black
 }
 
 .flip-card-back {
