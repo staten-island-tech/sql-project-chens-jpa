@@ -25,40 +25,26 @@ const session = ref();
 const userStore = useUserStore();
 const musicStore = useMusicStore();
 const pathname = window.location.pathname;
-const shownMusic = []
-
+const shownMusic = [];
 
 onMounted(() => {
   supabase.auth.getSession().then(({ data }) => {
     session.value = data.session;
-    const user = userStore.data.filter(user => user.id === session.value.user.id)[0]
-    user.favorites.forEach(favorite => {
-      shownMusic.push(musicStore.data.filter(album => album.id === favorite)[0])
+    const user = userStore.data.filter(
+      (user) => user.id === session.value.user.id
+    )[0];
+    user.favorites.forEach((favorite) => {
+      shownMusic.push(
+        musicStore.data.filter((album) => album.id === favorite)[0]
+      );
     });
   });
 
   supabase.auth.onAuthStateChange((_, _session) => {
     session.value = _session;
   });
-
-
 });
 </script>
-
-<template>
-  <h1 v-if="!session">You are not logged in.</h1>
-  <div v-if="session" class="gallery">
-      <Cards
-        v-for="album in shownMusic"
-        :key="album.title"
-        :title="album.title"
-        :artist="album.artist"
-        :img="album.img"
-        :id="album.id"
-        :session="session"
-      />
-    </div>
-</template>
 
 <style scoped>
 h1 {

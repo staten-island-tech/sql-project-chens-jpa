@@ -103,7 +103,7 @@ h2 {
 img {
   height: 30rem;
   width: 30rem;
-  box-shadow: 5px 5px 10px black;
+  box-shadow: 0.5rem 0.5rem 1rem var(--black);
 }
 
 .flip-card {
@@ -125,7 +125,7 @@ img {
 
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
-  box-shadow: 5px 5px 10px black;
+  box-shadow: 0.5rem 0.5rem 1rem var(--black);
 }
 
 .flip-card-front,
@@ -135,7 +135,7 @@ img {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  box-shadow: 5px 5px 10px black;
+  box-shadow: 0.5rem 0.5rem 1rem var(--black);
 }
 
 .flip-card-back {
