@@ -32,7 +32,7 @@ console.log(session);
   <section class="container">
     <nav id="top-bar">
       <RouterLink to="/">
-        <img src="../public/supabeats.png" alt="" class="link" id="logo" />
+        <img src="../public/supabeats.png" alt="supabeats logo" class="link" id="logo" />
       </RouterLink>
       <p class="top-bar-items">|</p>
       <RouterLink to="/" class="top-bar-items" v-if="session">Home</RouterLink>
