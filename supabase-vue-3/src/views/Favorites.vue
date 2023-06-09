@@ -1,35 +1,3 @@
-
-<script setup>
-import Cards from "../components/Cards.vue";
-import { onMounted, ref, computed } from "vue";
-import { supabase } from "../supabase";
-import { useUserStore } from "../stores/userStore";
-import { useMusicStore } from "../stores/musicStore";
-
-const session = ref();
-const userStore = useUserStore();
-const musicStore = useMusicStore();
-const pathname = window.location.pathname;
-const shownMusic = []
-
-
-onMounted(() => {
-  supabase.auth.getSession().then(({ data }) => {
-    session.value = data.session;
-    const user = userStore.data.filter(user => user.id === session.value.user.id)[0]
-    user.favorites.forEach(favorite => {
-      shownMusic.push(musicStore.data.filter(album => album.id === favorite)[0])
-    });
-  });
-
-  supabase.auth.onAuthStateChange((_, _session) => {
-    session.value = _session;
-  });
-
-
-});
-</script>
-
 <template>
   <h1 v-if="!session">You are not logged in.</h1>
   <div v-if="session" class="gallery">
@@ -45,13 +13,31 @@ onMounted(() => {
     </div>
 </template>
 
+<script setup>
+import { RouterLink } from "vue-router";
+import { onMounted, ref, computed } from "vue";
+import Auth from "../components/Auth.vue";
+import { supabase } from "../supabase";
+import { useUserStore } from "../stores/userStore";
+import { useMusicStore } from "../stores/musicStore";
+
+const session = ref();
+const userStore = useUserStore();
+const musicStore = useMusicStore();
+const pathname = window.location.pathname;
+onMounted(() => {
+  supabase.auth.getSession().then(({ data }) => {
+    session.value = data.session;
+  });
+
+  supabase.auth.onAuthStateChange((_, _session) => {
+    session.value = _session;
+  });
+});
+</script>
+
 <style scoped>
 h1 {
   font-size: var(--med);
-}
-.gallery {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 </style>

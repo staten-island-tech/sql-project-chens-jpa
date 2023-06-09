@@ -1,20 +1,22 @@
 <template>
   <form id="form" @submit.prevent="handleLogin">
-
     <div class="sign-in">
- <h2>Sign in via magic link to your email!</h2>
+      <h2>Sign in via magic link to your email!</h2>
 
-    <input required type="email" placeholder="Your email" v-model="email" />
-    <input
-      id="submit-btn"
-      type="submit"
-      :value="loading ? 'Loading' : 'Send magic link'"
-      :disabled="loading"
-    />
-
-
+      <input
+        required
+        type="email"
+        placeholder="Your email"
+        v-model="email"
+        id="input-field"
+      />
+      <input
+        id="submit-btn"
+        type="submit"
+        :value="loading ? 'Loading' : 'Send magic link'"
+        :disabled="loading"
+      />
     </div>
-   
   </form>
 </template>
 
@@ -46,23 +48,20 @@ const handleLogin = async () => {
 <style scoped>
 h2 {
   font-size: var(--med);
-  text-align: center;
 }
 
 input {
   font-size: var(--small);
-  margin: 2rem 0rem ;
+  margin: 2rem 0rem;
   padding: 0rem 1rem;
-  margin-left: 40%;
-  margin-right: 30%;
-  
 }
 
-#submit-btn {
-  margin: 0rem 62rem;
+#input-field {
+  width: 35rem;
+  margin: 0rem 1rem;
 }
 
-.sign-in{
+.sign-in {
   text-align: center;
 }
 </style>
