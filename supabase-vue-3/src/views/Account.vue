@@ -1,5 +1,4 @@
 <template>
-  <h1 v-if="!session">You are not logged in.</h1>
   <div v-if="session">
     <button @click.prevent="logOut()">Sign out</button>
   </div>
@@ -31,5 +30,10 @@ button {
   font-size: var(--small);
   padding: 0.5rem;
   margin: 0rem 1rem;
+}
+
+h1 {
+  font-size: var(--med);
+  text-align: center;
 }
 </style>

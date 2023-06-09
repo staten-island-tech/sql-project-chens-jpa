@@ -57,8 +57,8 @@ input {
 }
 
 #input-field {
-  width: 35rem;
   margin: 0rem 1rem;
+  width: 35rem;
 }
 
 .sign-in {
