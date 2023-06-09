@@ -48,4 +48,10 @@ onMounted(() => {
 h1 {
   font-size: var(--med);
 }
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 </style>
