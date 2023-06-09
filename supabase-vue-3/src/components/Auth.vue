@@ -1,20 +1,22 @@
 <template>
   <form id="form" @submit.prevent="handleLogin">
-
     <div class="sign-in">
- <h2>Sign in via magic link to your email!</h2>
+      <h2>Sign in via magic link to your email!</h2>
 
-    <input required type="email" placeholder="Your email" v-model="email" />
-    <input
-      id="submit-btn"
-      type="submit"
-      :value="loading ? 'Loading' : 'Send magic link'"
-      :disabled="loading"
-    />
-
-
+      <input
+        required
+        type="email"
+        placeholder="Your email"
+        v-model="email"
+        id="input-field"
+      />
+      <input
+        id="submit-btn"
+        type="submit"
+        :value="loading ? 'Loading' : 'Send magic link'"
+        :disabled="loading"
+      />
     </div>
-   
   </form>
 </template>
 
@@ -54,11 +56,12 @@ input {
   padding: 0rem 1rem;
 }
 
-#submit-btn {
+#input-field {
   margin: 0rem 1rem;
+  width: 35rem;
 }
 
-.sign-in{
+.sign-in {
   text-align: center;
 }
 </style>
