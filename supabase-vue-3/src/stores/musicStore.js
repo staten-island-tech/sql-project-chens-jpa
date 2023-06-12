@@ -3,10 +3,11 @@ import { ref, computed } from "vue";
 import { reactive } from "vue";
 import { supabase } from "../supabase.js";
 
-const { data, error } = await supabase.from("store").select();
+
 
 export const useMusicStore = defineStore("music", {
-  state: () => {
+  state: async () => {
+    const { data, error } = await supabase.from("store").select();
     return {
       data: data,
       error: error,
