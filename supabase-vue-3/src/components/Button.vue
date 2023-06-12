@@ -16,7 +16,6 @@ button {
   font-size: var(--big);
   padding: 1rem;
   border: none;
-  transition: 0.2s;
   background: none;
 }
 </style>
